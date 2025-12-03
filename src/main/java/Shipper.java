@@ -9,6 +9,12 @@ public class Shipper {
         this.phone = phone;
     }
 
+    public Shipper(String companyName, String phone) {
+        this.companyName = companyName;
+        this.phone = phone;
+    }
+
+
     public int getShipperID() {
         return shipperID;
     }
@@ -31,5 +37,13 @@ public class Shipper {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Shipper{" +
+                "companyName='" + companyName + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

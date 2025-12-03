@@ -11,6 +11,7 @@ public class Main {
         System.out.println("Enter phone: ");
         String phone = scanner.nextLine();
 
-        int newId = dao.i
+        long newId = dao.insert(new Shipper(name, phone));
+        System.out.println("New Shipper ID: "+ newId);
     }
 }
