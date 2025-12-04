@@ -8,10 +8,15 @@ public class Main {
         System.out.println("Enter new shipper name: ");
         String name = scanner.nextLine();
 
-        System.out.println("Enter phone: ");
+       System.out.println("Enter phone: ");
         String phone = scanner.nextLine();
 
         long newId = dao.insert(new Shipper(name, phone));
         System.out.println("New Shipper ID: "+ newId);
+
+        System.out.println("All shippers: ");
+        for (Shipper s : dao.getAllShippers()) {
+            System.out.println(s);
+        }
     }
 }

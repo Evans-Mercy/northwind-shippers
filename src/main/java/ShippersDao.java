@@ -1,6 +1,8 @@
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShippersDao {
     //add Shipper
@@ -46,6 +48,27 @@ public class ShippersDao {
             throw new RuntimeException(e);
         }
         return generatedKey;
+    }
+
+    //GET ALL SHIPPERS
+    public List<Shipper> getAllShippers() {
+        List<Shipper> shippers = new ArrayList<>();
+        String sql = "SELECT CompanyName, Phone FROM shippers";
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("CompanyName");
+                String phone = resultSet.getString("Phone");
+                shippers.add(new Shipper(name, phone));
+            }
+        } catch (
+                SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return shippers;
     }
 }
 
